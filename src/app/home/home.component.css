@@ -1,0 +1,15 @@
+.glass{
+    position: relative;
+    width: 100px;
+    height: 300px;
+    margin: auto;
+    background-color: rgb(2, 171, 250);
+    border: 2px solid rgb(142, 162, 206);
+    border-top: none;
+}
+.glass-empty{
+    position: absolute;
+    width: 96px;
+    height: 10px;
+    background-color: rgb(235, 246, 252);
+}

@@ -1,0 +1,1 @@
+﻿export { GetErrorPipeModule } from './get-error-pipe.module';

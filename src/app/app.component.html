@@ -1,0 +1,11 @@
+<div #appContainer >
+    <div class="d-flex justify-content-center">
+      <div class="col-sm-8 col-lg-6">
+        <div style="padding-top:20px">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    
+    <toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+  </div>

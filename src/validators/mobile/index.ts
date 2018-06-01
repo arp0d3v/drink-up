@@ -1,0 +1,1 @@
+﻿export { MobileNumberValidatorModule } from './mobile-number-validator.module';
