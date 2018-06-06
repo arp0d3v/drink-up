@@ -1,0 +1,25 @@
+<h4 class="text-center">Your activity</h4>
+<div class="list-group" *ngIf="days">
+  <div *ngFor="let item of days" class="list-group-item " (click)="goToDay(item);" >
+    <table border="0" style="width: 100%">
+      <tbody>
+        <tr>
+          <td>
+            Date: &nbsp;
+            <h5>{{item.date}}</h5>
+          </td>
+          <td style="width: 60px">
+            drinks: &nbsp; {{item.count}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="alert alert-info text-center" *ngIf="days==undefined || days.length==0">
+  No records found.
+</div>
+<hr>
+<div class="col-sm-12 text-center">
+   <a [routerLink]="['/home']"  class="btn btn-secondary" style="width:150px" >Back</a>
+</div>

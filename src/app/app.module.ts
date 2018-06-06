@@ -7,15 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DrinkAddComponent } from './drink-add/drink-add.component';
+import { DrinkOfDayComponent } from './drink-of-day/drink-of-day.component';
+import { DrinkHistoryComponent } from './drink-history/drink-history.component';
 
 import { routes } from './app.routes';
 import { GetErrorPipeModule } from 'pipes/get-error';
-import { SharedService } from 'services';
+import { SharedService, BeverageService, DrinkService } from 'services';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    DrinkAddComponent,
+    DrinkOfDayComponent,
+    DrinkHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,9 @@ import { SharedService } from 'services';
     routes
   ],
   providers: [
-    SharedService
+    SharedService,
+    BeverageService,
+    DrinkService
   ],
   bootstrap: [AppComponent]
 })

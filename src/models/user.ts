@@ -15,4 +15,8 @@ export class User {
     gender?: GenderEnum;
     weight?: number;
     dailySport: boolean;
+    drinkAmount: number;
+    constructor() {
+        this.drinkAmount = 700;
+    }
 }

@@ -1,6 +1,6 @@
 <div *ngIf="user">
   
-  <form (ngSubmit)="update()" #userEditForm="ngForm" id="userForm" name="userForm" >
+  <form (ngSubmit)="update()" #userEditForm="ngForm" id="userForm" name="userForm" style="padding-bottom: 10px" >
   <div class="form-group">
     <label for="firstNameInput">First Name</label>
     <input type="text" id="firstNameInput" name="firstNameInput" placeholder="First Name" class="form-control"
@@ -62,21 +62,32 @@
     <label for="genderInput">Gender</label>
     <select id="genderInput" name="genderInput" placeholder="Gender" class="form-control"
            [ngClass]="{'is-invalid': genderInput.invalid && genderInput.dirty}"
-           [(ngModel)]="user.gender" #genderInput="ngModel" required>
+           [(ngModel)]="user.gender" #genderInput="ngModel" required 
+           (ngModelChange)="howMuchToDrink()" (click)="calculateDrinkAmount=true" >
         <option ></option>
-        <option value="1">Male</option>
-        <option value="2">Female</option>
+        <option [ngValue]="1">Male</option>
+        <option [ngValue]="2">Female</option>
     </select>
     <small class="validation-message text-danger">
       {{genderInput | getError:'Gender'}}
     </small>
   </div>
-
+  <div class="form-group">
+      <label for="weightInput">Weight</label>
+      <input type="number" id="weightInput" name="weightInput" placeholder="Weight" class="form-control"
+             [ngClass]="{'is-invalid': weightInput.invalid && weightInput.dirty}"
+             [(ngModel)]="user.weight" #weightInput="ngModel" required 
+             (blur)="howMuchToDrink()" (click)="calculateDrinkAmount=true">
+      <small class="validation-message text-danger">
+        {{weightInput | getError:'Weight'}}
+      </small>
+    </div>
   <div class="form-group">
     <label for="dailySportInput">Daily Sport</label>
     <select id="dailySportInput" name="dailySportInput" placeholder="Daily Sport" class="form-control"
            [ngClass]="{'is-invalid': dailySportInput.invalid && dailySportInput.dirty}"
-           [(ngModel)]="user.dailySport" #dailySportInput="ngModel" required>
+           [(ngModel)]="user.dailySport" #dailySportInput="ngModel" required 
+           (ngModelChange)="howMuchToDrink()"  (click)="calculateDrinkAmount=true">
         <option ></option>
         <option [ngValue]="true">Yes</option>
         <option [ngValue]="false">No</option>
@@ -85,11 +96,25 @@
       {{dailySportInput | getError:'Daily Sport'}}
     </small>
   </div>
-
+  <div class="form-group">
+      <label for="drinkRange" class="small">How much do you want to drink per day:</label>
+    <div class="slidecontainer" style="padding: 10px 5px">
+      <div style="height: 20px;" class="text-center">
+          <span style="float: left;">700 ml</span>
+          <span >{{user?.drinkAmount}} ml</span>
+          <span style="float: right;">5000 ml</span>
+      </div>
+      <input type="range" #drinkRange="ngModel" min="700" max="5000" [(ngModel)]="user.drinkAmount" 
+       id="drinkRange" name="drinkRange" style="width: 100%">
+    </div>
+  </div>
   <div class="text-center">
     <button type="submit" class="btn btn-success" [disabled]="ajaxUpdate || userEditForm.invalid" style="width:150px">Save</button>
   </div>
 </form>
+<div class="col-sm-12 text-center">
+  <a [routerLink]="['/home']"  class="btn btn-secondary" style="width:150px" >Back</a>
+</div>
 <hr>
 <div class="text-center">
   <button class="button" class="btn btn-danger" (click)="logout()" *ngIf="isRegistered" >Logout</button>

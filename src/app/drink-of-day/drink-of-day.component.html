@@ -1,0 +1,44 @@
+<h4 class="text-center">
+  <span>Date:</span>&nbsp;
+  <span>{{dateName}}</span>
+</h4>
+<div *ngIf="drinks">
+
+
+<div class="list-group" >
+  <div *ngFor="let item of drinks" class="list-group-item " >
+    <table border="0" style="width: 100%">
+      <tbody>
+        <tr>
+          <td style="width: 100px">
+            <img src="assets/images/beverage/{{item.imageName}}" width="80" height="60" >
+          </td>
+          <td>
+            <h5>{{item.name}}</h5>
+            <h6>
+              <span>({{item.size}} ml)</span>
+            </h6>
+          </td>
+          <td style="width: 20px">
+            <button class="button" class="btn btn-sm btn-danger" (click)="deleteDrink(item.drinkId)">X</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <span>{{item.time}}</span>
+    </div>
+  </div>
+</div>
+<br>
+<h4 class="text-info text-center">
+  Total: &nbsp; {{dayDrinkAmount}} &nbsp; ml
+</h4>
+</div>
+<div class="alert alert-info text-center" *ngIf="drinks==undefined || drinks.length==0">
+  No records found on this day.
+</div>
+<hr>
+<div class="col-sm-12 text-center">
+   <a [routerLink]="['/home']"  class="btn btn-secondary" style="width:150px" >Back</a>
+</div>

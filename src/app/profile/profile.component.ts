@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
  birthMonth: string;
  birthDay: string;
  isRegistered = true;
+ calculateDrinkAmount = false;
   constructor(private sharedService: SharedService, private router: Router) {
     sharedService.onUserUpdated.subscribe(result => {
       if (result) {
@@ -26,6 +27,7 @@ export class ProfileComponent implements OnInit {
       } else {
         this.user = new User();
         this.isRegistered = false;
+        this.calculateDrinkAmount = true;
       }
     });
     sharedService.reloadUser();
@@ -40,7 +42,34 @@ export class ProfileComponent implements OnInit {
     this.sharedService.toastSuccess('Profile', 'Your information saved successfuly.');
   }
   logout() {
-this.sharedService.logout();
-
+    this.sharedService.logout();
   }
+  howMuchToDrink() {
+    if (this.calculateDrinkAmount === false) {
+      return;
+    }
+    let drinkAmount = 0;
+    let weightIncreaseCount = 0;
+    if (this.user.weight > 30) {
+      let weight = this.user.weight;
+      if (weight > 70) {
+        weight = 70;
+      }
+      weight -= 30;
+      weightIncreaseCount = (weight / 10);
+    }
+    if (this.user.gender === 1) {
+      drinkAmount = 1000;
+      if (this.user.dailySport) {
+        drinkAmount += 700;
+      }
+    } else if (this.user.gender === 2) {
+      drinkAmount = 700;
+      if (this.user.dailySport) {
+        drinkAmount += 700;
+      }
+    }
+    drinkAmount += weightIncreaseCount * 500;
+    this.user.drinkAmount = drinkAmount;
+}
 }

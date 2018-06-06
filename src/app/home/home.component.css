@@ -1,15 +1,32 @@
-.glass{
+.glass-wrapper{
     position: relative;
-    width: 100px;
+    width: 164px;
+    height: 310px;
+    margin: auto;
+}
+.glass{
+    position: absolute;
+    width: 160px;
     height: 300px;
     margin: auto;
-    background-color: rgb(2, 171, 250);
-    border: 2px solid rgb(142, 162, 206);
-    border-top: none;
+    background-image: url('/assets/images/glass-empty.png');
+    background-repeat: no-repeat;
+    z-index: 10;
 }
-.glass-empty{
+.glass-fill{
     position: absolute;
-    width: 96px;
-    height: 10px;
-    background-color: rgb(235, 246, 252);
+    bottom: 50px;
+    left: 10px;
+    width: 145px;
+    height: 200px;
+    background-color: rgb(132, 209, 250);
+    z-index: 5;
+}
+.glass-max{
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 145px;
+    height: 20px;
+    z-index: 12;
 }

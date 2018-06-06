@@ -29,7 +29,7 @@ export class SharedService {
         this.onUserUpdated.emit(this.user);
     }
     logout() {
-      localStorage.removeItem('user');
+      localStorage.clear();
       this.user = null;
       this.onUserUpdated.emit(this.user);
     }
@@ -57,4 +57,16 @@ export class SharedService {
       get breakpoint_xl(): number {
         return 1200;
       }
+      get currentDate(): string {
+        const utc = new Date().toJSON().slice(0, 10);
+        return utc;
+      }
+      get currentTime(): string {
+        const utc = new Date().toJSON().slice(11, 19);
+        return utc;
+      }
+      get currentDayCode(): number {
+        const currentDate = this.currentDate.replace(/-/g, '');
+        return parseInt(currentDate, 10);
+    }
 }
