@@ -7,9 +7,9 @@ export class SharedService {
     isUserRegistered = false;
     onUserUpdated = new EventEmitter<User>();
     onToastSuccess = new EventEmitter<ToastModel>();
-  onToastError = new EventEmitter<ToastModel>();
-  onToastWarning = new EventEmitter<ToastModel>();
-  onToastInfo = new EventEmitter<ToastModel>();
+    onToastError = new EventEmitter<ToastModel>();
+    onToastWarning = new EventEmitter<ToastModel>();
+    onToastInfo = new EventEmitter<ToastModel>();
     constructor() {
         this.reloadUser();
     }

@@ -1,3 +1,4 @@
+<h4 class="text-center">Profile</h4>
 <div *ngIf="user">
   
   <form (ngSubmit)="update()" #userEditForm="ngForm" id="userForm" name="userForm" style="padding-bottom: 10px" >
@@ -109,11 +110,11 @@
     </div>
   </div>
   <div class="text-center">
-    <button type="submit" class="btn btn-success" [disabled]="ajaxUpdate || userEditForm.invalid" style="width:150px">Save</button>
+    <button type="submit" class="btn btn-success" [disabled]="userEditForm.invalid" style="width:150px">Start</button>
   </div>
 </form>
 <div class="col-sm-12 text-center">
-  <a [routerLink]="['/home']"  class="btn btn-secondary" style="width:150px" >Back</a>
+  <a [routerLink]="['/home']"  class="btn btn-secondary" style="width:150px" *ngIf="isRegistered" >Back</a>
 </div>
 <hr>
 <div class="text-center">

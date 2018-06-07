@@ -35,7 +35,7 @@
   Total: &nbsp; {{dayDrinkAmount}} &nbsp; ml
 </h4>
 </div>
-<div class="alert alert-info text-center" *ngIf="drinks==undefined || drinks.length==0">
+<div class="alert alert-info text-center" *ngIf="!drinks || drinks.length==0">
   No records found on this day.
 </div>
 <hr>

@@ -15,16 +15,18 @@ export class HomeComponent implements OnInit {
     private sharedService: SharedService,
     private drinkService: DrinkService,
     private router: Router) {
+    this.sharedService.reloadUser();
+    this.user = this.sharedService.user;
     if (sharedService.isUserRegistered === false) {
         router.navigateByUrl('/profile');
     }
-    this.user = this.sharedService.user;
   }
 
   ngOnInit() {
     this.fillGlass();
   }
   fillGlass() {
+    if (!this.sharedService.user) { return ; }
     const glassHeight = 250;
     let height = 0;
     const drinkAmount = this.drinkService.calculateDrinkAmountInDay(this.sharedService.currentDayCode);
