@@ -83,8 +83,8 @@
     "webdriver:update": "node ./node_modules/protractor/bin/webdriver-manager update",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
-    "cordova:create": "cordova create cordova-app2 ir.maserwashserver.asanpardazesh MasterWash",
-    "cordova:android:key": "keytool -genkey -v -keystore MasterWash.keystore -alias MasterWash -keyalg RSA -keysize 2048 -validity 10000"
+    "cordova:create": "cordova create capp com.arp0d3v.drinkup DrinkUp",
+    "cordova:android:key": "keytool -genkey -v -keystore DrinkUp.keystore -alias DrinkUp -keyalg RSA -keysize 2048 -validity 10000"
   },
   "dependencies": {
     "@angular/animations": "^5.2.7",

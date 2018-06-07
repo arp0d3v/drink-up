@@ -77,3 +77,10 @@ dll/
 *.css.shim.ts
 *.ngsummary.json
 *.shim.ngstyle.ts
+
+# Cordova #
+/capp/node_modules/
+/capp/plugins/
+/capp/platforms/android/app
+/capp/platforms/android/cordova
+/capp/platforms/android/CordovaLib
