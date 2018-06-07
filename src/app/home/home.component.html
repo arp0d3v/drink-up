@@ -3,8 +3,7 @@
   <hr>
  <div class="glass-wrapper" >
     <div class="glass-max">{{user?.drinkAmount}} ml</div>
-    <div class="glass" (click)="drinksOfToday()">
-    </div>
+    <img src="assets/images/glass-empty.png" class="glass" (click)="drinksOfToday()" >
     <div class="glass-fill" #glassFill (click)="drinksOfToday()">
       <span *ngIf="currentDrinkAmount>0" style="padding-top: 5px;">
           {{currentDrinkAmount}} ml

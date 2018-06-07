@@ -7,16 +7,32 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <link type="text/css" href="assets/css/toaster.css" rel="stylesheet" />
   <link type="text/css" href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
   <script src="assets/js/jquery-1.12.4.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
   <% if (htmlWebpackPlugin.options.metadata.isDevServer == false) { %>
+    <script>
+      window.addEventListener = function () {
+        EventTarget.prototype.addEventListener.apply(this, arguments);
+      };
+      window.removeEventListener = function () {
+        EventTarget.prototype.removeEventListener.apply(this, arguments);
+      };
+      document.addEventListener = function () {
+        EventTarget.prototype.addEventListener.apply(this, arguments);
+      };
+      document.removeEventListener = function () {
+        EventTarget.prototype.removeEventListener.apply(this, arguments);
+      };
+    </script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="assets/js/cordova.js"></script>
-    <% } %>
+  <% } %>
+
 </head>
 <body>
   <app-root>
@@ -26,4 +42,5 @@
     </div>
   </app-root>
 </body>
+
 </html>

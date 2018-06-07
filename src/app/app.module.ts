@@ -13,7 +13,7 @@ import { DrinkHistoryComponent } from './drink-history/drink-history.component';
 
 import { routes } from './app.routes';
 import { GetErrorPipeModule } from 'pipes/get-error';
-import { SharedService, BeverageService, DrinkService } from 'services';
+import { SharedService, BeverageService, DrinkService, CordovaService } from 'services';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +34,8 @@ import { SharedService, BeverageService, DrinkService } from 'services';
   providers: [
     SharedService,
     BeverageService,
-    DrinkService
+    DrinkService,
+    CordovaService
   ],
   bootstrap: [AppComponent]
 })

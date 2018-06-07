@@ -17,4 +17,4 @@ export const router: Routes = [
     { path: 'drinkhistory', component: DrinkHistoryComponent },
 ];
 
-export const routes: ModuleWithProviders = RouterModule.forRoot(router);
+export const routes: ModuleWithProviders = RouterModule.forRoot(router, { useHash: true});

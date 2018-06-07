@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { User, ToastModel } from 'models';
 import { Observable } from 'rxjs/observable';
+import { Location } from '@angular/common';
 @Injectable()
 export class SharedService {
     user: User;
@@ -10,7 +11,7 @@ export class SharedService {
     onToastError = new EventEmitter<ToastModel>();
     onToastWarning = new EventEmitter<ToastModel>();
     onToastInfo = new EventEmitter<ToastModel>();
-    constructor() {
+    constructor(public location: Location) {
         this.reloadUser();
     }
     reloadUser() {
@@ -35,37 +36,37 @@ export class SharedService {
     }
     toastSuccess(title: string, body: string) {
         this.onToastSuccess.emit(new ToastModel(body, title));
-      }
-      toastError(title: string, body: string) {
+    }
+    toastError(title: string, body: string) {
         this.onToastError.emit(new ToastModel(body, title));
-      }
-      toastWarning(title: string, body: string) {
+    }
+    toastWarning(title: string, body: string) {
         this.onToastWarning.emit(new ToastModel(body, title));
-      }
-      toastInfo(title: string, body: string) {
+    }
+    toastInfo(title: string, body: string) {
         this.onToastInfo.emit(new ToastModel(body, title));
-      }
-      get breakpoint_sm(): number {
+    }
+    get breakpoint_sm(): number {
         return 576;
-      }
-      get breakpoint_md(): number {
+    }
+    get breakpoint_md(): number {
         return 768;
-      }
-      get breakpoint_lg(): number {
+    }
+    get breakpoint_lg(): number {
         return 992;
-      }
-      get breakpoint_xl(): number {
+    }
+    get breakpoint_xl(): number {
         return 1200;
-      }
-      get currentDate(): string {
+    }
+    get currentDate(): string {
         const utc = new Date().toJSON().slice(0, 10);
         return utc;
-      }
-      get currentTime(): string {
+    }
+    get currentTime(): string {
         const utc = new Date().toJSON().slice(11, 19);
         return utc;
-      }
-      get currentDayCode(): number {
+    }
+    get currentDayCode(): number {
         const currentDate = this.currentDate.replace(/-/g, '');
         return parseInt(currentDate, 10);
     }

@@ -10,6 +10,10 @@ import { environment } from 'environments/environment';
  */
 import { AppModule } from './app/app.module';
 
+function _window(): any {
+  // return the global native browser window object
+  return window;
+ }
 /**
  * Bootstrap our Angular app with a top level NgModule
  */
@@ -24,6 +28,9 @@ export function main(): Promise<any> {
  * Needed for hmr
  * in prod this is replace for document ready
  */
+if (_window().cordova) {
+  document.addEventListener('deviceready', main, false);
+} else {
 switch (document.readyState) {
   case 'loading':
     document.addEventListener('DOMContentLoaded', _domReadyHandler, false);
@@ -32,7 +39,7 @@ switch (document.readyState) {
   case 'complete':
   default:
     main();
-}
+}}
 
 function _domReadyHandler() {
  document.removeEventListener('DOMContentLoaded', _domReadyHandler, false);

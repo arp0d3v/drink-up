@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { ToasterService, ToasterContainerComponent, Toast, ToasterConfig } from 'angular2-toaster';
 
-import { SharedService } from 'services';
+import { SharedService, CordovaService } from 'services';
 import { ToastModel } from 'models';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -24,7 +24,9 @@ export class AppComponent implements OnInit {
     private sharedService: SharedService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toaster: ToasterService) {
+    private toaster: ToasterService,
+    private cordovaService: CordovaService
+  ) {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
@@ -35,12 +37,12 @@ export class AppComponent implements OnInit {
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe((event) => {
-        //this.titleService.setTitle(event['title']);
       });
     this.sharedService.onToastError.subscribe(t => { this.toastError(t); });
     this.sharedService.onToastInfo.subscribe(t => { this.toastInfo(t); });
     this.sharedService.onToastSuccess.subscribe(t => { this.toastSuccess(t); });
     this.sharedService.onToastWarning.subscribe(t => { this.toastWarning(t); });
+    cordovaService.init();
   }
   ngOnInit() {
     this.sharedService.reloadUser();
@@ -85,5 +87,4 @@ export class AppComponent implements OnInit {
     this.toasterConfig.timeout = 5000;
     return this.addToast('info', toast.title, toast.body);
   }
-
 }
