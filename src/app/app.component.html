@@ -1,10 +1,17 @@
 <div #appContainer >
-    <div class="d-flex justify-content-center">
-      <div class="col-sm-8 col-lg-6">
-        <div style="padding-top:20px">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
+    <nav class="navbar navbar-dark bg-dark fixed-top" >
+        <a [routerLink]=" ['/home']"  >
+            <span class="navbar-toggler-icon"></span>
+        </a>
+    </nav>
+    <div style="padding-top: 50px">
+        <div class="d-flex justify-content-center">
+            <div class="col-sm-8 col-lg-6">
+              <div style="padding-top:20px">
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
     </div>
     <div style="height: 30px;">
 

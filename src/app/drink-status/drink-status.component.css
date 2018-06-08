@@ -3,6 +3,7 @@
     width: 164px;
     height: 310px;
     margin: auto;
+    overflow: visible;
 }
 .glass{
     position: absolute;
@@ -29,4 +30,13 @@
     width: 145px;
     height: 20px;
     z-index: 12;
+}
+.glass-percent{
+    position: absolute;
+    top: 130px;
+    right: -50px;
+    width: 80px;
+    height: 20px;
+    z-index: 12;
+    text-align: right;
 }

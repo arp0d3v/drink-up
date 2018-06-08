@@ -29,6 +29,6 @@ export class DrinkAddComponent implements OnInit {
       return;
     }
     this.drinkService.addDrink(this.beverage);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/drinkstatus');
   }
 }

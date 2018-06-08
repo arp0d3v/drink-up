@@ -10,6 +10,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { DrinkAddComponent } from './drink-add/drink-add.component';
 import { DrinkOfDayComponent } from './drink-of-day/drink-of-day.component';
 import { DrinkHistoryComponent } from './drink-history/drink-history.component';
+import { DrinkStatusComponent } from './drink-status/drink-status.component';
+import { NotificationComponent } from './notification/notification.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 import { routes } from './app.routes';
 import { GetErrorPipeModule } from 'pipes/get-error';
@@ -21,7 +24,10 @@ import { SharedService, BeverageService, DrinkService, CordovaService } from 'se
     ProfileComponent,
     DrinkAddComponent,
     DrinkOfDayComponent,
-    DrinkHistoryComponent
+    DrinkHistoryComponent,
+    DrinkStatusComponent,
+    NotificationComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

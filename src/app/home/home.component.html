@@ -1,24 +1,33 @@
-<div class="text-center">
-  <h2>Your drinking status</h2>
-  <hr>
- <div class="glass-wrapper" >
-    <div class="glass-max">{{user?.drinkAmount}} ml</div>
-    <img src="assets/images/glass-empty.png" class="glass" (click)="drinksOfToday()" >
-    <div class="glass-fill" #glassFill (click)="drinksOfToday()">
-      <span *ngIf="currentDrinkAmount>0" style="padding-top: 5px;">
-          {{currentDrinkAmount}} ml
-      </span>
-      
-    </div>
- </div>
- <hr>
- <div class="col-sm-12 text-center" style="padding-bottom: 10px">
-    <a [routerLink]="['/adddrink']" class="btn btn-success" style="width:150px">Add a drink</a>
- </div>
- <div class="col-sm-12 text-center" style="padding-bottom: 10px">
-    <a routerLink="/profile" class="btn btn-info" style="width:150px">Profile</a>
- </div>
- <div class="col-sm-12 text-center" style="padding-bottom: 10px">
-    <a routerLink="/drinkhistory" class="btn btn-outline-warning" style="width:150px">Activity log</a>
- </div>
+<h5 class="text-center">Drink Up</h5>
+<br>
+<div class="list-group row">
+    <a [routerLink]=" ['/profile']" class="list-group-item" >
+      <span class="icon ion-person"></span>
+      <span>Profile</span>
+    </a>
+
+    <a [routerLink]=" ['/drinkstatus']" class="list-group-item"  >
+      <span class="icon ion-ios-location-outline"></span>
+      <span>Today status</span> 
+    </a>
+
+    <a [routerLink]=" ['/drinkhistory']" class="list-group-item" >
+      <span class="icon ion-tshirt-outline"></span>
+      <span>Drinking history</span>
+    </a>
+
+    <a [routerLink]=" ['/notification']" class="list-group-item"  >
+      <span class="icon ion-ios-list-outline"></span>
+      <span>Notification Settings</span>
+    </a>
+
+    <a [routerLink]=" ['/contactus']" class="list-group-item" >
+      <span class="icon ion-ios-telephone-outline"></span>
+      <span>Contact Us</span>
+    </a>
+
+    <a [routerLink]=" ['/profile']" class="list-group-item" (click)="logout()" >
+      <span class="icon ion-ios-telephone-outline"></span>
+      <span class="text-danger">Log Out</span>
+    </a>
 </div>

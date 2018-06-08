@@ -1,0 +1,53 @@
+<div>
+    <form (ngSubmit)="update(true)" #notifyForm="ngForm" id="notifyForm" name="notifyForm" style="padding-bottom: 10px" >
+        <div class="form-group">
+            <label for="notifyEnabledInput">Notify</label>
+            <select id="notifyEnabledInput" name="notifyEnabledInput" class="form-control"
+                   [ngClass]="{'is-invalid': notifyEnabledInput.invalid && notifyEnabledInput.dirty}"
+                   [(ngModel)]="user.notifyEnabled" #notifyEnabledInput="ngModel" required
+                   (ngModelChange)="update()" >
+                <option ></option>
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+            </select>
+            <small class="validation-message text-danger">
+              {{notifyEnabledInput | getError:'Daily Sport'}}
+            </small>
+        </div>
+        <div *ngIf="!user.notifyEnabled" class="alert alert-warning text-center" >
+            Notification is disabled!
+        </div>
+        <div *ngIf="user.notifyEnabled" >
+            <div class="form-group">
+                <label for="notifyDelayInput">Notify every</label>
+                <div class="input-group">
+                    <input type="number" id="notifyDelayInput" name="notifyDelayInput" class="form-control"
+                           [ngClass]="{'is-invalid': notifyDelayInput.invalid && notifyDelayInput.dirty}"
+                           [(ngModel)]="user.notifyDelay" #notifyDelayInput="ngModel" required style="width: 40%;" >
+                    <select id="notifyUnitInput" name="notifyUnitInput" class="form-control"
+                           [ngClass]="{'is-invalid': notifyUnitInput.invalid && notifyUnitInput.dirty}"
+                           [(ngModel)]="user.notifyUnit" #notifyUnitInput="ngModel" required >
+                        <option ></option>
+                        <option value="minute">Minute</option>
+                        <option value="hour">Hour</option>
+                    </select>
+                </div>
+                <small class="validation-message text-danger">
+                  {{notifyDelayInput | getError:'Notify hour'}}
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="notifyMessageInput">Message</label>
+                <textarea rows="3" id="notifyMessageInput" name="notifyMessageInput" placeholder="drink up..." class="form-control"
+                       [ngClass]="{'is-invalid': notifyMessageInput.invalid && notifyMessageInput.dirty}"
+                       [(ngModel)]="user.notifyMessage" #notifyMessageInput="ngModel" required ></textarea>
+                <small class="validation-message text-danger">
+                  {{notifyMessageInput | getError:'Notify message'}}
+                </small>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success" [disabled]="notifyForm.invalid" style="width:150px">Save</button>
+             </div>
+        </div>
+    </form>
+</div>

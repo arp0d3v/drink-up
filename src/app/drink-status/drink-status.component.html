@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h3>Drinking status</h3>
+  <hr>
+  
+ <div class="glass-wrapper" >
+    <div class="glass-max">{{user?.drinkAmount}} ml</div>
+    <img src="assets/images/glass-empty.png" class="glass" (click)="drinksOfToday()" >
+    <div class="glass-fill" #glassFill (click)="drinksOfToday()">
+      <span *ngIf="currentDrinkAmount>0" style="padding-top: 5px;">
+          {{currentDrinkAmount}} ml
+      </span>
+      
+    </div>
+    <h5 class="glass-percent">
+      {{currentDrinkPercent}} %
+    </h5>
+ </div>
+ <hr>
+ <div class="col-sm-12 text-center" style="padding-bottom: 10px">
+    <a [routerLink]="['/adddrink']" class="btn btn-success" style="width:150px">Add a drink</a>
+ </div>
+ <div *ngIf="!user.notifyEnabled" class="alert alert-warning text-center" >
+  Notification is disabled!
+  <a [routerLink]="['/notification']" class="alert-link"> Enable it.</a>
+</div>
+</div>

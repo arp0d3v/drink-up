@@ -16,6 +16,10 @@ export class User {
     weight?: number;
     dailySport: boolean;
     drinkAmount: number;
+    notifyEnabled: boolean;
+    notifyDelay: number;
+    notifyUnit: string;
+    notifyMessage: string;
     constructor() {
         this.drinkAmount = 700;
     }

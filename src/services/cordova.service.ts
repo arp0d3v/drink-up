@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/map';
 import { SharedService } from 'services';
+import { User } from 'models';
 declare var device;
 function _window(): any {
     return window;
@@ -36,8 +37,21 @@ export class CordovaService {
     }
     public onResume(): void {
         this.resume.next(true);
+        this.setNotification(this.sharedService.user);
     }
     get device(): any {
         return device;
+    }
+    setNotification (user: User) {
+        this.cordova.plugins.notification.local.clearAll();
+        if (user.notifyEnabled) {
+            const nMessage = user.notifyMessage;
+            const nDelay = user.notifyDelay;
+            const nUnit = user.notifyUnit;
+            this.cordova.plugins.notification.local.schedule({
+                title: nMessage,
+                trigger: { in: nDelay, unit: nUnit }
+            });
+        }
     }
 }

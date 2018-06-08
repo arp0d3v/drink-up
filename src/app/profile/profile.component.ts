@@ -28,6 +28,10 @@ export class ProfileComponent implements OnInit {
         this.user = new User();
         this.isRegistered = false;
         this.calculateDrinkAmount = true;
+        this.user.notifyEnabled = false;
+        this.user.notifyDelay = 2;
+        this.user.notifyUnit = 'minute';
+        this.user.notifyMessage = 'Time to drink some water';
       }
     });
     sharedService.reloadUser();
@@ -38,8 +42,7 @@ export class ProfileComponent implements OnInit {
   update() {
     this.user.birthDate = `${this.birthYear}/${this.birthMonth}/${this.birthDay}`;
     this.sharedService.saveUser(this.user);
-    this.router.navigateByUrl('/home');
-    this.sharedService.toastSuccess('Profile', 'Your information saved successfuly.');
+    this.router.navigateByUrl('/drinkstatus');
   }
   logout() {
     this.sharedService.logout();

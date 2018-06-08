@@ -2,18 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'services';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'contact-us',
+  templateUrl: './contact-us.component.html',
 })
-export class HomeComponent implements OnInit {
+export class ContactUsComponent implements OnInit {
   constructor(
     private sharedService: SharedService,
     private router: Router
   ) {
   }
   ngOnInit() {
-  }
-  logout() {
-    this.sharedService.logout();
   }
 }

@@ -15,6 +15,9 @@ export class DrinkHistoryComponent implements OnInit {
     private drinkService: DrinkService
   ) {
     this.days = drinkService.getDaysWithDrink();
+    if (this.days) {
+      this.days.reverse();
+    }
    }
 
   ngOnInit() {

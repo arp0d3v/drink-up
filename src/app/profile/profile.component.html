@@ -113,10 +113,7 @@
     <button type="submit" class="btn btn-success" [disabled]="userEditForm.invalid" style="width:150px">Start</button>
   </div>
 </form>
-<div class="col-sm-12 text-center">
-  <a [routerLink]="['/home']"  class="btn btn-secondary" style="width:150px" *ngIf="isRegistered" >Back</a>
-</div>
-<hr>
+
 <div class="text-center">
   <button class="button" class="btn btn-danger" (click)="logout()" *ngIf="isRegistered" >Logout</button>
 </div>
