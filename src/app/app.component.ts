@@ -89,7 +89,8 @@ export class AppComponent implements OnInit {
   }
   toggleMenu() {
     if (this.sharedService.location.path(false) === '/home') {
-      this.sharedService.location.back();
+      // this.sharedService.location.back();
+      this.router.navigateByUrl('drinkstatus');
       return;
     }
     this.router.navigateByUrl('/home');

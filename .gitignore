@@ -86,3 +86,4 @@ dll/
 /capp/platforms/android/.gradle/
 /capp/platforms/android/cordova/
 /capp/platforms/android/CordovaLib
+capp/platforms/android/.gradle/
