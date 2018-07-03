@@ -17,7 +17,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { routes } from './app.routes';
 import { GetErrorPipeModule } from 'pipes/get-error';
-import { SharedService, BeverageService, DrinkService, CordovaService } from 'services';
+import { SharedService, BeverageService, DrinkService, CordovaService, AuthGuard } from 'services';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,8 @@ import { SharedService, BeverageService, DrinkService, CordovaService } from 'se
     SharedService,
     BeverageService,
     DrinkService,
-    CordovaService
+    CordovaService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

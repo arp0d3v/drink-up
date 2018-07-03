@@ -14,6 +14,9 @@ export class SharedService {
     constructor(public location: Location) {
         this.reloadUser();
     }
+    getuser(): User {
+        return JSON.parse(localStorage.getItem('user'));
+    }
     reloadUser() {
         const userAsString = localStorage.getItem('user');
         if (userAsString && userAsString.length > 0) {

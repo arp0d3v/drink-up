@@ -27,7 +27,7 @@ export class NotificationComponent implements OnInit {
     this.cordovaService.setNotification(this.user);
     if (showToast) {
       this.sharedService.toastSuccess('Notify Center', 'settings updated.');
+      this.router.navigateByUrl('/drinkstatus');
     }
-    this.router.navigateByUrl('/drinkstatus');
   }
 }

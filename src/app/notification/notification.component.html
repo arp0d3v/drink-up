@@ -5,7 +5,7 @@
             <select id="notifyEnabledInput" name="notifyEnabledInput" class="form-control"
                    [ngClass]="{'is-invalid': notifyEnabledInput.invalid && notifyEnabledInput.dirty}"
                    [(ngModel)]="user.notifyEnabled" #notifyEnabledInput="ngModel" required
-                   (ngModelChange)="update()" >
+                   (ngModelChange)="update(false)" >
                 <option ></option>
                 <option [ngValue]="true">Yes</option>
                 <option [ngValue]="false">No</option>

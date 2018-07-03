@@ -10,16 +10,16 @@ import { DrinkHistoryComponent } from './drink-history/drink-history.component';
 import { DrinkStatusComponent } from './drink-status/drink-status.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-
+import { AuthGuard } from 'services/auth.guard';
 export const router: Routes = [
-    { path: '', redirectTo: 'drinkstatus', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
+    { path: '', redirectTo: 'drinkstatus', pathMatch: 'full', canActivate: [AuthGuard] },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: ProfileComponent },
-    { path: 'adddrink', component: DrinkAddComponent },
-    { path: 'drinksofday/:dayCode', component: DrinkOfDayComponent },
-    { path: 'drinkhistory', component: DrinkHistoryComponent },
-    { path: 'drinkstatus', component: DrinkStatusComponent },
-    { path: 'notification', component: NotificationComponent },
+    { path: 'adddrink', component: DrinkAddComponent, canActivate: [AuthGuard] },
+    { path: 'drinksofday/:dayCode', component: DrinkOfDayComponent, canActivate: [AuthGuard] },
+    { path: 'drinkhistory', component: DrinkHistoryComponent, canActivate: [AuthGuard] },
+    { path: 'drinkstatus', component: DrinkStatusComponent, canActivate: [AuthGuard] },
+    { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
     { path: 'contactus', component: ContactUsComponent },
 ];
 
