@@ -1,7 +1,10 @@
 <div class="text-center">
   <h3>Drinking status</h3>
   <hr>
-
+  <div *ngIf="currentDrinkPercent>=100" class="alert alert-success text-center">
+    You have reached your daily goal. 
+    <div>Congratulations </div>
+  </div>
   <div class="glass-wrapper">
     <div class="glass-max">{{user?.drinkAmount}} ml</div>
     <img src="assets/images/glass-empty.png" class="glass" (click)="drinksOfToday()">

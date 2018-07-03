@@ -82,6 +82,7 @@ dll/
 /capp/node_modules/
 /capp/www/
 /capp/plugins/
-/capp/platforms/android/app
-/capp/platforms/android/cordova
+/capp/platforms/android/app/
+/capp/platforms/android/.gradle/
+/capp/platforms/android/cordova/
 /capp/platforms/android/CordovaLib

@@ -11,7 +11,7 @@ export class DrinkService {
         const drink = new DrinkModel(
             beverage.name,
             beverage.imageName,
-            beverage.size * beverage.waterPercent || 1,
+            Math.round(beverage.size * beverage.waterPercent || 1),
             this.sharedService.currentDate,
             this.sharedService.currentTime,
             this.sharedService.currentDayCode,
