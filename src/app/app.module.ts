@@ -13,6 +13,7 @@ import { DrinkHistoryComponent } from './drink-history/drink-history.component';
 import { DrinkStatusComponent } from './drink-status/drink-status.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { routes } from './app.routes';
 import { GetErrorPipeModule } from 'pipes/get-error';
@@ -35,6 +36,8 @@ import { SharedService, BeverageService, DrinkService, CordovaService } from 'se
     BrowserAnimationsModule,
     ToasterModule,
     GetErrorPipeModule,
+    ModalModule,
+    ModalModule.forRoot(),
     routes
   ],
   providers: [

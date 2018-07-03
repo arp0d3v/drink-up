@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedService, DrinkService } from 'services';
-import { User } from 'models';
+import { SharedService, DrinkService, BeverageService } from 'services';
+import { User, BeverageModel } from 'models';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'drink-status',
   templateUrl: './drink-status.component.html',
@@ -12,9 +13,12 @@ export class DrinkStatusComponent implements OnInit {
   currentDrinkPercent = 0;
   @ViewChild('glassFill') glassFill: ElementRef;
   user: User;
+  beverages: BeverageModel[];
+  beverage: BeverageModel;
   constructor(
     private sharedService: SharedService,
     private drinkService: DrinkService,
+    private beverageService: BeverageService,
     private router: Router) {
     this.sharedService.reloadUser();
     this.user = this.sharedService.user;
@@ -25,6 +29,7 @@ export class DrinkStatusComponent implements OnInit {
 
   ngOnInit() {
     this.fillGlass();
+    this.beverages = this.beverageService.getBeverages();
   }
   fillGlass() {
     if (!this.sharedService.user) { return ; }
@@ -41,5 +46,23 @@ export class DrinkStatusComponent implements OnInit {
   }
   drinksOfToday() {
     this.router.navigateByUrl('/drinksofday/' + this.sharedService.currentDayCode.toString());
+  }
+  setBeverage(item: BeverageModel) {
+    this.beverage = item;
+  }
+  addDrink(modal: ModalDirective) {
+    if (this.beverage === undefined) {
+      this.sharedService.toastWarning('', 'Select a beverage.');
+      return;
+    }
+    this.drinkService.addDrink(this.beverage);
+    modal.hide();
+    this.fillGlass();
+  }
+  addDrinkQuick(size: number, modal: ModalDirective) {
+    this.beverage.size = size;
+    this.drinkService.addDrink(this.beverage);
+    modal.hide();
+    this.fillGlass();
   }
 }

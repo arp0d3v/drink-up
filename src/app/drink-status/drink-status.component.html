@@ -1,26 +1,68 @@
 <div class="text-center">
   <h3>Drinking status</h3>
   <hr>
-  
- <div class="glass-wrapper" >
+
+  <div class="glass-wrapper">
     <div class="glass-max">{{user?.drinkAmount}} ml</div>
-    <img src="assets/images/glass-empty.png" class="glass" (click)="drinksOfToday()" >
+    <img src="assets/images/glass-empty.png" class="glass" (click)="drinksOfToday()">
     <div class="glass-fill" #glassFill (click)="drinksOfToday()">
       <span *ngIf="currentDrinkAmount>0" style="padding-top: 5px;">
-          {{currentDrinkAmount}} ml
+        {{currentDrinkAmount}} ml
       </span>
-      
+
     </div>
     <h5 class="glass-percent">
       {{currentDrinkPercent}} %
     </h5>
- </div>
- <hr>
- <div class="col-sm-12 text-center" style="padding-bottom: 10px">
-    <a [routerLink]="['/adddrink']" class="btn btn-success" style="width:150px">Add a drink</a>
- </div>
- <div *ngIf="!user.notifyEnabled" class="alert alert-warning text-center" >
-  Notification is disabled!
-  <a [routerLink]="['/notification']" class="alert-link"> Enable it.</a>
-</div>
+  </div>
+  <hr>
+  <div *ngIf="!user.notifyEnabled" class="alert alert-warning text-center">
+    Notification is disabled!
+    <a [routerLink]="['/notification']" class="alert-link"> Enable it.</a>
+  </div>
+  <div class="col-sm-12 text-center text-success" style="padding-bottom: 10px">
+    choose your drink
+  </div>
+  <div class="row">
+    <div *ngFor="let item of beverages" class="col-6 text-center" (click)="setBeverage(item);drinkModal.show()">
+      <img src="assets/images/beverage/{{item.imageName}}"  height="80">
+      <h5>{{item.name}}</h5>
+    </div>
+  </div>
+
+  <div bsModal #drinkModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="dialog-sizes-name1" class="modal-title pull-left">{{beverage?.name}}</h4>
+          <button type="button" class="close pull-right" (click)="drinkModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" *ngIf="beverage">
+            <div class="slidecontainer" style="padding: 10px 5px">
+              <div style="height: 20px;" class="text-center">
+                <span style="float: left;">50 ml</span>
+                <span>{{beverage.size}} ml</span>
+                <span style="float: right;">1000 ml</span>
+              </div>
+              <input type="range" #drinkRange="ngModel" min="50" max="1000" [(ngModel)]="beverage.size" id="drinkRange" name="drinkRange"
+                style="width: 100%">
+            </div>
+            <div>
+              <div class="btn-group" role="group" aria-label="size group" style="width: 100%;">
+                <button type="button" class="btn btn-outline-secondary col-3" (click)="addDrinkQuick(100, drinkModal)">100</button>
+                <button type="button" class="btn btn-outline-secondary col-3" (click)="addDrinkQuick(200, drinkModal)">200</button>
+                <button type="button" class="btn btn-outline-secondary col-3" (click)="addDrinkQuick(300, drinkModal)">300</button>
+                <button type="button" class="btn btn-outline-secondary col-3" (click)="addDrinkQuick(400, drinkModal)">400</button>
+              </div>
+            </div>
+
+          </div>
+          <button class="button" class="btn btn-success" (click)="addDrink(drinkModal)" style="width:150px" [disabled]="!beverage">Add Drink</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
