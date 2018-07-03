@@ -1,15 +1,15 @@
 <h4 class="text-center">Your drinking history</h4>
 <div class="list-group" *ngIf="days">
-  <div *ngFor="let item of days" class="list-group-item " (click)="goToDay(item);" >
+  <div *ngFor="let item of days" class="list-group-item " (click)="goToDay(item);">
+    <h5>Date: &nbsp; {{item.date}}</h5>
     <table border="0" style="width: 100%">
       <tbody>
         <tr>
-          <td>
-            Date: &nbsp;
-            <h5>{{item.date}}</h5>
-          </td>
-          <td style="width: 60px">
+          <td style="width: 40%">
             drinks: &nbsp; {{item.count}}
+          </td>
+          <td>
+            amount: &nbsp; {{item.amount || 0}} ml
           </td>
         </tr>
       </tbody>

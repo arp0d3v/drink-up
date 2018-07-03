@@ -61,13 +61,15 @@ export class DrinkService {
         const days = this.getDaysWithDrink();
         let day = days.find(x => x.dayCode === drink.dayCode);
         if (day === undefined) {
-            day = new DayActivityModel(drink.dayCode, drink.date, 0);
+            day = new DayActivityModel(drink.dayCode, drink.date, 0, 0);
             days.push(day);
         }
         if (isDeleted) {
             day.count -= 1;
+            day.amount -= drink.size;
         } else {
             day.count += 1;
+            day.amount += drink.size;
         }
         localStorage.setItem('days', JSON.stringify(days));
     }

@@ -87,4 +87,11 @@ export class AppComponent implements OnInit {
     this.toasterConfig.timeout = 5000;
     return this.addToast('info', toast.title, toast.body);
   }
+  toggleMenu() {
+    if (this.sharedService.location.path(false) === '/home') {
+      this.sharedService.location.back();
+      return;
+    }
+    this.router.navigateByUrl('/home');
+  }
 }

@@ -2,7 +2,8 @@ export class DayActivityModel {
     constructor(
        public dayCode: number,
        public date: string,
-       public count: number
+       public count: number,
+       public amount: number
     ) {
     }
 }
