@@ -21,12 +21,13 @@ export class NotificationComponent implements OnInit {
   update(showToast?: boolean) {
     this.sharedService.saveUser(this.user);
     if (!this.cordovaService.onCordova) {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/drinkstatus');
       return;
     }
     this.cordovaService.setNotification(this.user);
     if (showToast) {
       this.sharedService.toastSuccess('Notify Center', 'settings updated.');
     }
+    this.router.navigateByUrl('/drinkstatus');
   }
 }

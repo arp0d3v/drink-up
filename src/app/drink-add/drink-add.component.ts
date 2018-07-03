@@ -31,4 +31,9 @@ export class DrinkAddComponent implements OnInit {
     this.drinkService.addDrink(this.beverage);
     this.router.navigateByUrl('/drinkstatus');
   }
+  addDrinkQuick(size: number) {
+    this.beverage.size = size;
+    this.drinkService.addDrink(this.beverage);
+    this.router.navigateByUrl('/drinkstatus');
+  }
 }

@@ -31,7 +31,7 @@ export class DrinkOfDayComponent implements OnInit {
   }
   deleteDrink(drinkId: number) {
     this.drinkService.deleteDrink(drinkId);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/drinkstatus');
     this.drinks = this.drinkService.getDayDrinks(this.dayCode);
   }
 }
